@@ -1,4 +1,5 @@
 export interface Recipe {
+  likes: number;
   id: number;
   nombre: string;
   imagen: string;

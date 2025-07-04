@@ -4,7 +4,9 @@ import type { ReactNode } from 'react';
 import type { Recipe } from '../types/Recipe';
 import recetasData from '../data/recetas.json';
 
+
 interface RecipeContextType {
+  recipes: any;
   recetas: Recipe[];
   favoritos: number[];
   addToFavoritos: (id: number) => void;
@@ -17,6 +19,7 @@ export const RecipeContext = createContext<RecipeContextType | undefined>(undefi
 
 interface RecipeProviderProps {
   children: ReactNode;
+  
 }
 
 export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children }) => {
@@ -58,6 +61,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children }) => {
   };
 
   const value = {
+    recipes: recetas, // Added to satisfy RecipeContextType
     recetas,
     favoritos,
     addToFavoritos,
